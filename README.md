@@ -5,9 +5,9 @@ pumps, intended for distribution through HACS.
 
 ## Development status
 
-**Protocol transport in development. No working Home Assistant integration or
-installable HACS release is published yet. This repository has not been
-submitted to or accepted by HACS.**
+**Protocol library and external-controller MQTT deployment are operational on
+one M18 installation. A native custom-component/HACS release is not published
+yet. This repository has not been submitted to or accepted by HACS.**
 
 The initial implementation targets the NEXUS M18 EVI. Compatibility with other
 models and firmware must be verified individually; similar product names are
@@ -17,8 +17,10 @@ The manufacturer has supplied the M-EVI register table. That correspondence
 and its attachments are not redistributed here. Documented temperatures,
 operating flags and fault registers are decoded. Bounded temperature-setpoint
 changes use precondition checks, FC06 and readback. One heating-target change
-and restoration have been verified on an M18 EVI. Other commands, complete HA
-integration and thermal-controller acceptance remain unfinished.
+and restoration have been verified on an M18 EVI, including the Home Assistant
+MQTT command path through a single-owner heating-controller service. Its full
+register dashboard and temporary inlet-target supervisor are separate from
+the future native integration. Long-term thermal acceptance remains pending.
 
 ## Protocol development
 
@@ -40,6 +42,13 @@ reads, timeout, cancellation and duplicate transport ownership. They also cover
 signed/scaled temperatures, fault flags, target limits, changed preconditions,
 write echo/readback, no-op suppression and ambiguous write failures. Synthetic
 tests alone do not prove physical heat-pump control.
+
+The catalog covers 271 configuration words and 43 status words. Documented
+numeric service parameters have bounded encoding and require both native unit
+enable and compressor-running flags to be off. Reserved/ambiguous registers,
+factory reset and forced actuators are not writable. Values contradicting the
+tested firmware remain read-only; do not treat a plausible raw value as proof
+of a register's meaning.
 
 See [Register contracts](docs/REGISTERS.md) for confirmed mappings and unresolved
 firmware differences. Heating/cooling setpoints regulate the water **inlet**,

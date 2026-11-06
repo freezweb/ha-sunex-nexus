@@ -191,6 +191,46 @@ class TransportTests(unittest.IsolatedAsyncioTestCase):
             await self.client().set_setpoint('heating', 36, expected=35)
         self.assertEqual(self.writes, [(0x91, 36)])
 
+    async def test_power_bit_preserves_other_bits(self):
+        self.bank[0]=0x70
+        result=await self.client().change_operating('enabled',1,expected=0x70)
+        self.assertEqual(result.requested,0x71)
+
+    async def test_silent_and_powerful_are_exclusive(self):
+        self.bank[1]=0x91
+        await self.client().change_operating('silent',1,expected=0x91)
+        self.assertEqual(self.bank[1],0xA1)
+
+    async def test_service_edit_rejected_while_enabled(self):
+        self.bank.update({0:65,0x8004:0,146:0})
+        with self.assertRaisesRegex(ProtocolError,'requires'):
+            await self.client().change_parameter(146,-2,expected=0)
+        self.assertEqual(self.writes,[])
+
+    async def test_service_edit_rejected_while_compressor_running(self):
+        self.bank.update({0:64,0x8004:1,146:0})
+        with self.assertRaises(ProtocolError):
+            await self.client().change_parameter(146,-2,expected=0)
+        self.assertEqual(self.writes,[])
+
+    async def test_service_signed_write_while_off(self):
+        self.bank.update({0:64,0x8004:0,146:0})
+        await self.client().change_parameter(146,-2,expected=0)
+        self.assertEqual(self.writes,[(146,65534)])
+
+    async def test_mode_change_rejected_while_running(self):
+        self.bank.update({0:65,0x8004:1,4:1})
+        with self.assertRaises(ProtocolError):
+            await self.client().change_operating('mode',2,expected=1)
+        self.assertEqual(self.writes,[])
+
+    async def test_reserved_and_reset_cannot_be_written(self):
+        client=self.client()
+        for address in [0,66,256,268,0x8000,0x7ffe,1000]:
+            with self.assertRaises(ValueError):
+                await client.change_parameter(address,1,expected=0)
+        self.assertEqual(self.requests,[])
+
 
 if __name__ == '__main__':
     unittest.main()

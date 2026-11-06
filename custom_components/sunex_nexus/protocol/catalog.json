@@ -1,0 +1,3566 @@
+[
+  {
+    "address": 0,
+    "hex": "0000",
+    "name": "Parameter mark 1",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 1,
+    "hex": "0001",
+    "name": "Control mark 1",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 2,
+    "hex": "0002",
+    "name": "Control mark 2",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 3,
+    "hex": "0003",
+    "name": "Number of presses",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 4,
+    "hex": "0004",
+    "name": "Mode",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 5,
+    "hex": "0005",
+    "name": "P09 Defrost Frequency",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 6,
+    "hex": "0006",
+    "name": "P10 Defrost cycle",
+    "bounds": [
+      20,
+      90
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 7,
+    "hex": "0007",
+    "name": "P12 Defrost time",
+    "bounds": [
+      5,
+      20
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 8,
+    "hex": "0008",
+    "name": "A01 Main expansion valve operation cycle",
+    "bounds": [
+      20,
+      90
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 9,
+    "hex": "0009",
+    "name": "A14 Heating main valve initial opening degree 00",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 10,
+    "hex": "000A",
+    "name": "A15 Heating main valve initial opening degree 01",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 11,
+    "hex": "000B",
+    "name": "A16 Heating main valve initial opening degree 02",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 12,
+    "hex": "000C",
+    "name": "A17Heating main valve initial opening degree 03",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 13,
+    "hex": "000D",
+    "name": "A18Heating main valve initial opening degree 04",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 14,
+    "hex": "000E",
+    "name": "A19Heating main valve initial opening degree 05",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 15,
+    "hex": "000F",
+    "name": "A20Heating main valve initial opening degree 06",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 16,
+    "hex": "0010",
+    "name": "A21Heating main valve initial opening degree 07",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 17,
+    "hex": "0011",
+    "name": "A22 Refrigeration main valve initial opening degree 00",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 18,
+    "hex": "0012",
+    "name": "A23 Refrigeration main valve initial opening 01",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 19,
+    "hex": "0013",
+    "name": "A24 Refrigeration main valve initial opening 02",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 20,
+    "hex": "0014",
+    "name": "A25 Refrigeration main valve initial opening 03",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 21,
+    "hex": "0015",
+    "name": "A26 Hot water main valve initial opening 00",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 22,
+    "hex": "0016",
+    "name": "A27 Hot water main valve initial opening 01",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 23,
+    "hex": "0017",
+    "name": "A28 Hot water main valve initial opening 02",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 24,
+    "hex": "0018",
+    "name": "A29 Hot water main valve initial opening 03",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 25,
+    "hex": "0019",
+    "name": "A30 Heating main valve automatic adjustment lower limit 00",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 26,
+    "hex": "001A",
+    "name": "A31 Lower limit of automatic adjustment of main heating",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 27,
+    "hex": "001B",
+    "name": "A32 Lower limit of automatic adjustment of the main heating",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 28,
+    "hex": "001C",
+    "name": "A33 Lower limit of automatic adjustment of the main heating",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 29,
+    "hex": "001D",
+    "name": "A34 Lower limit of automatic adjustment of main heating",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 30,
+    "hex": "001E",
+    "name": "A35 Lower limit of automatic adjustment of the main heating",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 31,
+    "hex": "001F",
+    "name": "A36 Lower limit of automatic adjustment of the main heating",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 32,
+    "hex": "0020",
+    "name": "A37 Lower limit of automatic adjustment of main heating",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 33,
+    "hex": "0021",
+    "name": "A39 Defrost main expansion valve opening",
+    "bounds": [
+      10,
+      225
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 34,
+    "hex": "0022",
+    "name": "A40 Minimum opening of main expansion valve for hot",
+    "bounds": [
+      25,
+      75
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 35,
+    "hex": "0023",
+    "name": "A42Manual steps of main expansion valve",
+    "bounds": [
+      10,
+      225
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 36,
+    "hex": "0024",
+    "name": "A43 Proportionality coefficient of superheat of main",
+    "bounds": [
+      1,
+      20
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 37,
+    "hex": "0025",
+    "name": "A44 Differential coefficient of superheat for main expansion",
+    "bounds": [
+      1,
+      180
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 38,
+    "hex": "0026",
+    "name": "B02 Manual steps for auxiliary expansion valve",
+    "bounds": [
+      10,
+      225
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 39,
+    "hex": "0027",
+    "name": "B04 Auxiliary expansion valve exhaust proportionality",
+    "bounds": [
+      1,
+      20
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 40,
+    "hex": "0028",
+    "name": "B05 Auxiliary expansion valve exhaust differential coefficient",
+    "bounds": [
+      0,
+      180
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 41,
+    "hex": "0029",
+    "name": "B06 Auxiliary expansion valve superheat proportionality",
+    "bounds": [
+      1,
+      20
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 42,
+    "hex": "002A",
+    "name": "B07 Auxiliary expansion valve superheat differential",
+    "bounds": [
+      0,
+      180
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 43,
+    "hex": "002B",
+    "name": "B08 Auxiliary expansion valve adjustment cycle",
+    "bounds": [
+      10,
+      20
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 44,
+    "hex": "002C",
+    "name": "B19 Heating auxiliary valve initial opening degree 00",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 45,
+    "hex": "002D",
+    "name": "B20 Heating auxiliary valve initial opening degree 01",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 46,
+    "hex": "002E",
+    "name": "B21 Heating auxiliary valve initial opening degree 02",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 47,
+    "hex": "002F",
+    "name": "B22Heating auxiliary valve initial opening degree 03",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 48,
+    "hex": "0030",
+    "name": "B23Heating auxiliary valve initial opening degree 04",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 49,
+    "hex": "0031",
+    "name": "B24 Heating auxiliary valve initial opening 05",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 50,
+    "hex": "0032",
+    "name": "B25Heating auxiliary valve initial opening degree 06",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 51,
+    "hex": "0033",
+    "name": "B26Heating auxiliary valve initial opening 07",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 52,
+    "hex": "0034",
+    "name": "B27 Hot water auxiliary valve initial opening 00",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 53,
+    "hex": "0035",
+    "name": "B28 Hot water auxiliary valve initial opening 01",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 54,
+    "hex": "0036",
+    "name": "B29 Hot water auxiliary valve initial opening 02",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 55,
+    "hex": "0037",
+    "name": "B30 Hot water auxiliary valve initial opening degree 03",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 56,
+    "hex": "0038",
+    "name": "B31 Heating auxiliary valve automatic adjustment lower limit",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 57,
+    "hex": "0039",
+    "name": "B32 Lower limit of automatic adjustment of auxiliary heating",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 58,
+    "hex": "003A",
+    "name": "B33 Heating Auxiliary Valve Automatic Adjustment Lower",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 59,
+    "hex": "003B",
+    "name": "B34 Lower limit of automatic adjustment of the auxiliary",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 60,
+    "hex": "003C",
+    "name": "B35 Lower limit of automatic adjustment of the auxiliary",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 61,
+    "hex": "003D",
+    "name": "B36 Heating valve lower limit of automatic adjustment 05",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 62,
+    "hex": "003E",
+    "name": "B37 Heating valve lower limit of automatic adjustment 06",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 63,
+    "hex": "003F",
+    "name": "B38 Heating auxiliary valve automatic adjustment lower limit",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 64,
+    "hex": "0040",
+    "name": "B39 Auxiliary valve opening during defrosting",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 65,
+    "hex": "0041",
+    "name": "B40 Auxiliary valve opening degree when cooling",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 66,
+    "hex": "0042",
+    "name": "C03 High pressure protection value (reserved)",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 67,
+    "hex": "0043",
+    "name": "C04 High pressure recovery value (reserved)",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 68,
+    "hex": "0044",
+    "name": "C05 Low pressure protection value",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 69,
+    "hex": "0045",
+    "name": "C06 Low pressure recovery value",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 70,
+    "hex": "0046",
+    "name": "D03 Heating air speed 1",
+    "bounds": [
+      0,
+      100
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 71,
+    "hex": "0047",
+    "name": "D04 Heating air speed 2",
+    "bounds": [
+      0,
+      100
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 72,
+    "hex": "0048",
+    "name": "D05 Heating air speed 3",
+    "bounds": [
+      0,
+      100
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 73,
+    "hex": "0049",
+    "name": "D06 Heating air speed 4",
+    "bounds": [
+      0,
+      100
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 74,
+    "hex": "004A",
+    "name": "D07 Heating air speed5",
+    "bounds": [
+      0,
+      100
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 75,
+    "hex": "004B",
+    "name": "D08Heating air speed6",
+    "bounds": [
+      0,
+      100
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 76,
+    "hex": "004C",
+    "name": "Reservation",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 77,
+    "hex": "004D",
+    "name": "Reserved",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 78,
+    "hex": "004E",
+    "name": "D11 Heating air speed 1 corresponding to the coil temperature",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 79,
+    "hex": "004F",
+    "name": "D12 Heating air speed 2 corresponding to the coil temperature",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 80,
+    "hex": "0050",
+    "name": "D13 Heating air speed 3 corresponds to the coil temperature",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 81,
+    "hex": "0051",
+    "name": "D14 Heating air speed 4 corresponds to the coil temperature",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 82,
+    "hex": "0052",
+    "name": "D15 Heating air speed 5 corresponds to the coil temperature.",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 83,
+    "hex": "0053",
+    "name": "D16 Heating air speed 6 corresponds to the coil temperature",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 84,
+    "hex": "0054",
+    "name": "D17 Reserved",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 85,
+    "hex": "0055",
+    "name": "D18 Reserved",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 86,
+    "hex": "0056",
+    "name": "D19 DC fan speed adjustment cycle",
+    "bounds": [
+      10,
+      180
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 87,
+    "hex": "0057",
+    "name": "D20 Fan speed adjustment per cycle",
+    "bounds": [
+      0,
+      100
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 88,
+    "hex": "0058",
+    "name": "D21 Hot water air speed 1",
+    "bounds": [
+      0,
+      1000
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 89,
+    "hex": "0059",
+    "name": "D22 Hot water air speed 2",
+    "bounds": [
+      0,
+      1000
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 90,
+    "hex": "005A",
+    "name": "D23 Hot water air speed 3",
+    "bounds": [
+      0,
+      1000
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 91,
+    "hex": "005B",
+    "name": "D24 Hot water air speed 4",
+    "bounds": [
+      0,
+      1000
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 92,
+    "hex": "005C",
+    "name": "D25 Hot water air speed 1 corresponds to the coil",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 93,
+    "hex": "005D",
+    "name": "D26 Hot water air speed 2 corresponding to the coil",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 94,
+    "hex": "005E",
+    "name": "D27 Hot water air speed 3 corresponds to coil temperature",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 95,
+    "hex": "005F",
+    "name": "D28 Hot water air speed 4 corresponds to the coil",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 96,
+    "hex": "0060",
+    "name": "D29 Cooling DC maximum air speed 1",
+    "bounds": [
+      0,
+      1000
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 97,
+    "hex": "0061",
+    "name": "D30 Cooling DC maximum air speed 2",
+    "bounds": [
+      0,
+      1000
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 98,
+    "hex": "0062",
+    "name": "D31 Refrigeration DC maximum air speed 3",
+    "bounds": [
+      0,
+      1000
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 99,
+    "hex": "0063",
+    "name": "D32 Refrigeration DC maximum air speed 4",
+    "bounds": [
+      0,
+      1000
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 100,
+    "hex": "0064",
+    "name": "B41 Hot water auxiliary valve automatic adjustment lower",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 101,
+    "hex": "0065",
+    "name": "B42 Hot water auxiliary valve automatic adjustment lower",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 102,
+    "hex": "0066",
+    "name": "B43 Hot water auxiliary valve automatic adjustment lower",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 103,
+    "hex": "0067",
+    "name": "B44 Lower limit of automatic adjustment of hot water",
+    "bounds": [
+      0,
+      240
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 104,
+    "hex": "0068",
+    "name": "B45 Enhancement valve heating open exhaust temperature",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 105,
+    "hex": "0069",
+    "name": "B46 Enhanced enthalpy valve heating on exhaust",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 106,
+    "hex": "006A",
+    "name": "B47 Enhanced enthalpy valve heating on exhaust",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 107,
+    "hex": "006B",
+    "name": "B48 Enhancement valve heating on exhaust temperature 03",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 108,
+    "hex": "006C",
+    "name": "B49 Enhanced Enthalpy Valve Heat On Exhaust Temperature",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 109,
+    "hex": "006D",
+    "name": "B50 Enhanced Enthalpy Valve Heat On Exhaust Temperature",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 110,
+    "hex": "006E",
+    "name": "B51 Enhanced Enthalpy Valve Heat On Exhaust Temperature",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 111,
+    "hex": "006F",
+    "name": "B52 Enhancement valve heating on exhaust temperature 07",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 112,
+    "hex": "0070",
+    "name": "B53 Enhancement valve hot water open exhaust",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 113,
+    "hex": "0071",
+    "name": "B54 Enhancement valve hot water open exhaust",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 114,
+    "hex": "0072",
+    "name": "B55 Enhancement valve hot water open exhaust",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 115,
+    "hex": "0073",
+    "name": "B56 Enhancement valve hot water open exhaust",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 116,
+    "hex": "0074",
+    "name": "B57 Enhancement valve cooling on exhaust temperature 00",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 117,
+    "hex": "0075",
+    "name": "B58Enhanced Enthalpy Valve Cooling On Exhaust",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 118,
+    "hex": "0076",
+    "name": "B59 Enhancement valve cooling on exhaust temperature 02",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 119,
+    "hex": "0077",
+    "name": "B60 Enhancement valve cooling on exhaust temperature 03",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 120,
+    "hex": "0078",
+    "name": "B61 Enhancement valve opening delay",
+    "bounds": [
+      0,
+      180
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 121,
+    "hex": "0079",
+    "name": "B63 Enhancement valve close exhaust gas return difference",
+    "bounds": [
+      0,
+      30
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 122,
+    "hex": "007A",
+    "name": "B64 Auxiliary electronic expansion valve heating exhaust",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 123,
+    "hex": "007B",
+    "name": "B65 Auxiliary electronic expansion valve heating exhaust",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 124,
+    "hex": "007C",
+    "name": "B66 Auxiliary electronic expansion valve heating exhaust",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 125,
+    "hex": "007D",
+    "name": "B67 Auxiliary electronic expansion valve heating and exhaust",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 126,
+    "hex": "007E",
+    "name": "B68 Auxiliary electronic expansion valve heating and exhaust",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 127,
+    "hex": "007F",
+    "name": "B69 Auxiliary electronic expansion valve heating and exhaust",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 128,
+    "hex": "0080",
+    "name": "B70 Auxiliary electronic expansion valve heating and exhaust",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 129,
+    "hex": "0081",
+    "name": "B71 Auxiliary electronic expansion valve heating exhaust",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 130,
+    "hex": "0082",
+    "name": "B72 Auxiliary electronic expansion valve hot water exhaust",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 131,
+    "hex": "0083",
+    "name": "B73 Auxiliary electronic expansion valve hot water exhaust",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 132,
+    "hex": "0084",
+    "name": "B74 Auxiliary electronic expansion valve hot water exhaust",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 133,
+    "hex": "0085",
+    "name": "B75 Auxiliary circuit electronic expansion valve hot water",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 134,
+    "hex": "0086",
+    "name": "B77 Target superheat correction value 1",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 135,
+    "hex": "0087",
+    "name": "B78 Target superheat correction value 2",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 136,
+    "hex": "0088",
+    "name": "B79 Target superheat correction value 3",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 137,
+    "hex": "0089",
+    "name": "B80 Target superheat correction value 4",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 138,
+    "hex": "008A",
+    "name": "B81 Target superheat correction value 5",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 139,
+    "hex": "008B",
+    "name": "B82 Target overheat correction value 6",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 140,
+    "hex": "008C",
+    "name": "B83 Target superheat correction value7",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 141,
+    "hex": "008D",
+    "name": "P01 Air conditioning return temperature",
+    "bounds": [
+      2,
+      18
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 142,
+    "hex": "008E",
+    "name": "P02 Hot water return temperature",
+    "bounds": [
+      2,
+      18
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 143,
+    "hex": "008F",
+    "name": "P03 Hot water set temperature",
+    "bounds": [
+      28,
+      60
+    ],
+    "access": "setpoint",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 144,
+    "hex": "0090",
+    "name": "P04 Cooling set temperature",
+    "bounds": [
+      7,
+      30
+    ],
+    "access": "setpoint",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 145,
+    "hex": "0091",
+    "name": "P05 Heating set temperature",
+    "bounds": [
+      15,
+      50
+    ],
+    "access": "setpoint",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 146,
+    "hex": "0092",
+    "name": "P08 Water temperature compensation",
+    "bounds": [
+      -5,
+      15
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 147,
+    "hex": "0093",
+    "name": "P11Defrost entry temperature",
+    "bounds": [
+      -15,
+      -1
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 148,
+    "hex": "0094",
+    "name": "P13 Defrost exit temperature",
+    "bounds": [
+      1,
+      40
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 149,
+    "hex": "0095",
+    "name": "P14Defrost environment and coil temperature difference 1",
+    "bounds": [
+      0,
+      15
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 150,
+    "hex": "0096",
+    "name": "P15 Defrost ambient and coil temperature difference 2",
+    "bounds": [
+      0,
+      15
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 151,
+    "hex": "0097",
+    "name": "P16 Defrost ambient temperature",
+    "bounds": [
+      0,
+      20
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 152,
+    "hex": "0098",
+    "name": "A02 Main expansion valve heating target superheat1",
+    "bounds": [
+      -5,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 153,
+    "hex": "0099",
+    "name": "A03 Main expansion valve heating target superheat 2",
+    "bounds": [
+      -5,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 154,
+    "hex": "009A",
+    "name": "A04 Main expansion valve heating target superheat degree3",
+    "bounds": [
+      -5,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 155,
+    "hex": "009B",
+    "name": "A05 Main expansion valve heating target superheat degree 4",
+    "bounds": [
+      -5,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 156,
+    "hex": "009C",
+    "name": "A06 Main expansion valve heating target superheat degree 5",
+    "bounds": [
+      -5,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 157,
+    "hex": "009D",
+    "name": "A07 Main expansion valve heating target superheat degree6",
+    "bounds": [
+      -5,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 158,
+    "hex": "009E",
+    "name": "A08 Main expansion valve heating target superheat degree7",
+    "bounds": [
+      -5,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 159,
+    "hex": "009F",
+    "name": "A09 Main expansion valve heating target superheat degree8",
+    "bounds": [
+      -5,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 160,
+    "hex": "00A0",
+    "name": "A10 Main expansion cooling target superheat degree 1",
+    "bounds": [
+      -5,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 161,
+    "hex": "00A1",
+    "name": "A11 Main expansion cooling target superheat degree 2",
+    "bounds": [
+      -5,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 162,
+    "hex": "00A2",
+    "name": "A12 Main expansion cooling target superheat degree 3",
+    "bounds": [
+      -5,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 163,
+    "hex": "00A3",
+    "name": "A13 Main expansion cooling target superheat degree 4",
+    "bounds": [
+      -5,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 164,
+    "hex": "00A4",
+    "name": "A38 Exhaust gas temperature regulated by main expansion",
+    "bounds": [
+      70,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 165,
+    "hex": "00A5",
+    "name": "B03 Enthalpy increasing solenoid valve opening ambient",
+    "bounds": [
+      11,
+      45
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 166,
+    "hex": "00A6",
+    "name": "B09 Auxiliary expansion valve target exhaust temperature",
+    "bounds": [
+      70,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 167,
+    "hex": "00A7",
+    "name": "B10 Closed auxiliary expansion valve exhaust temperature",
+    "bounds": [
+      40,
+      70
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 168,
+    "hex": "00A8",
+    "name": "B11 heating auxiliary expansion valve target superheat",
+    "bounds": [
+      -10,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 169,
+    "hex": "00A9",
+    "name": "B12 Heating auxiliary expansion valve target superheat",
+    "bounds": [
+      -10,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 170,
+    "hex": "00AA",
+    "name": "B13 Heating auxiliary expansion valve target superheat 3",
+    "bounds": [
+      -10,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 171,
+    "hex": "00AB",
+    "name": "B14 Heating auxiliary expansion valve target superheat 4",
+    "bounds": [
+      -10,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 172,
+    "hex": "00AC",
+    "name": "B15 Heating Auxiliary Expansion Valve Target Superheat 5",
+    "bounds": [
+      -10,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 173,
+    "hex": "00AD",
+    "name": "B16 Heating Auxiliary Expansion Valve Target Superheat6",
+    "bounds": [
+      -10,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 174,
+    "hex": "00AE",
+    "name": "B17 Heating Auxiliary Expansion Valve Target Superheat7",
+    "bounds": [
+      -10,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 175,
+    "hex": "00AF",
+    "name": "B18 Heating Auxiliary Expansion Valve Target Superheat8",
+    "bounds": [
+      -10,
+      10
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 176,
+    "hex": "00B0",
+    "name": "P28 Enable electric heating parameters",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Observed M18 value exceeds documented range; firmware mapping requires vendor confirmation"
+  },
+  {
+    "address": 177,
+    "hex": "00B1",
+    "name": "R15 Hot water mode outlet water too high downconversion",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Observed M18 value exceeds documented range; firmware mapping requires vendor confirmation"
+  },
+  {
+    "address": 178,
+    "hex": "00B2",
+    "name": "R16 Exhaust setting TP0",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 179,
+    "hex": "00B3",
+    "name": "R17 exhaust setting TP1",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 180,
+    "hex": "00B4",
+    "name": "R18 exhaust setting TP2",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 181,
+    "hex": "00B5",
+    "name": "R19 exhaust setting TP3",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 182,
+    "hex": "00B6",
+    "name": "R20 exhaust setting TP4",
+    "bounds": [
+      50,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 183,
+    "hex": "00B7",
+    "name": "Manual frequency",
+    "bounds": [
+      15,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 184,
+    "hex": "00B8",
+    "name": "R00 Compressor operating frequency 1",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 185,
+    "hex": "00B9",
+    "name": "R01 Compressor operating frequency 2",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 186,
+    "hex": "00BA",
+    "name": "R02 Compressor operating frequency 3",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 187,
+    "hex": "00BB",
+    "name": "R03 Compressor operating frequency 4",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 188,
+    "hex": "00BC",
+    "name": "R04 Compressor operating frequency5",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 189,
+    "hex": "00BD",
+    "name": "R05 Compressor operating frequency6",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 190,
+    "hex": "00BE",
+    "name": "R06 Compressor operating frequency7",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 191,
+    "hex": "00BF",
+    "name": "R07 Compressor operating frequency8",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 192,
+    "hex": "00C0",
+    "name": "R08 Compressor operating frequency9",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 193,
+    "hex": "00C1",
+    "name": "R09 Compressor frequency10",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 194,
+    "hex": "00C2",
+    "name": "R10 Compressor frequency 11",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 195,
+    "hex": "00C3",
+    "name": "R11 Compressor operating frequency12",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 196,
+    "hex": "00C4",
+    "name": "R12 Lower limit of thermostatic operating frequency",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 197,
+    "hex": "00C5",
+    "name": "R13 Thermostatic operating frequency upper limit",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 198,
+    "hex": "00C6",
+    "name": "S2 Smart grid operation time (high byte)",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 199,
+    "hex": "00C7",
+    "name": "S2 Smart grid operation time (low byte)",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 200,
+    "hex": "00C8",
+    "name": "R21 FM point lower limit 01",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 201,
+    "hex": "00C9",
+    "name": "R22 FM point lower limit 02",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 202,
+    "hex": "00CA",
+    "name": "R23 FM point lower limit 03",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 203,
+    "hex": "00CB",
+    "name": "R24 FM point lower limit 04",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 204,
+    "hex": "00CC",
+    "name": "R25 FM point upper limit 01",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 205,
+    "hex": "00CD",
+    "name": "R26 FM point upper limit 02",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 206,
+    "hex": "00CE",
+    "name": "R27 FM point upper limit 03",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 207,
+    "hex": "00CF",
+    "name": "R28 FM point upper limit 04",
+    "bounds": [
+      0,
+      125
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 208,
+    "hex": "00D0",
+    "name": "Timing segment allowable marker bit",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 209,
+    "hex": "00D1",
+    "name": "The first segment is timed to turn on the hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 210,
+    "hex": "00D2",
+    "name": "First timer on minute",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 211,
+    "hex": "00D3",
+    "name": "First timer off hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 212,
+    "hex": "00D4",
+    "name": "First timer off minute",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 213,
+    "hex": "00D5",
+    "name": "Second timer on hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 214,
+    "hex": "00D6",
+    "name": "Second timer on minutes",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 215,
+    "hex": "00D7",
+    "name": "Second timer off hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 216,
+    "hex": "00D8",
+    "name": "Second timer off minutes",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 217,
+    "hex": "00D9",
+    "name": "Third timer on hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 218,
+    "hex": "00DA",
+    "name": "Third timer on minutes",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 219,
+    "hex": "00DB",
+    "name": "Third timer off hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 220,
+    "hex": "00DC",
+    "name": "Third timer off minute",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 221,
+    "hex": "00DD",
+    "name": "Fourth timer on hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 222,
+    "hex": "00DE",
+    "name": "Fourth timer on minute",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 223,
+    "hex": "00DF",
+    "name": "Fourth timer off hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 224,
+    "hex": "00E0",
+    "name": "Fourth timer off minute",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 225,
+    "hex": "00E1",
+    "name": "Fifth timer on hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 226,
+    "hex": "00E2",
+    "name": "Fifth timer on minute",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 227,
+    "hex": "00E3",
+    "name": "Fifth timer off hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 228,
+    "hex": "00E4",
+    "name": "Fifth timer off minute",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 229,
+    "hex": "00E5",
+    "name": "Reservation",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 230,
+    "hex": "00E6",
+    "name": "P17 high temperature sterilization cycle days",
+    "bounds": [
+      0,
+      30
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 231,
+    "hex": "00E7",
+    "name": "P18 Autoclaving start time",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 232,
+    "hex": "00E8",
+    "name": "P19 High-temperature disinfection maintenance time",
+    "bounds": [
+      0,
+      90
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 233,
+    "hex": "00E9",
+    "name": "P20 Autoclaving set temperature",
+    "bounds": [
+      0,
+      90
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 234,
+    "hex": "00EA",
+    "name": "P21 High temperature sterilization heat pump set",
+    "bounds": [
+      40,
+      60
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 235,
+    "hex": "00EB",
+    "name": "P23 Heating compensation temperature point (ambient",
+    "bounds": [
+      0,
+      40
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 236,
+    "hex": "00EC",
+    "name": "P24 Target temperature compensation coefficient",
+    "bounds": [
+      1,
+      30
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 237,
+    "hex": "00ED",
+    "name": "P26 Electric heating on ambient temperature",
+    "bounds": [
+      -20,
+      20
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 238,
+    "hex": "00EE",
+    "name": "R29 Heating powerful mode frequency increase",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 239,
+    "hex": "00EF",
+    "name": "R30Heating quiet mode maximum frequency",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 240,
+    "hex": "00F0",
+    "name": "R31Refrigeration strong mode frequency increase",
+    "bounds": [
+      -30,
+      30
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 241,
+    "hex": "00F1",
+    "name": "R32 Cooling silent mode maximum frequency",
+    "bounds": [
+      30,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 242,
+    "hex": "00F2",
+    "name": "Holiday mode set temperature",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 243,
+    "hex": "00F3",
+    "name": "D09 Heating/Hot water silent mode max air speed",
+    "bounds": [
+      0,
+      1000
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 244,
+    "hex": "00F4",
+    "name": "D10 Cooling Silent Mode Maximum Air Speed",
+    "bounds": [
+      0,
+      1000
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 245,
+    "hex": "00F5",
+    "name": "Timer mute enable flag",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 246,
+    "hex": "00F6",
+    "name": "First timer mute on hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 247,
+    "hex": "00F7",
+    "name": "First timer mute on minute",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 248,
+    "hex": "00F8",
+    "name": "First timer mute off hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 249,
+    "hex": "00F9",
+    "name": "First timer mute off minute",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 250,
+    "hex": "00FA",
+    "name": "Second timer mute on hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 251,
+    "hex": "00FB",
+    "name": "Second timer on minute",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 252,
+    "hex": "00FC",
+    "name": "Second timer off hour",
+    "bounds": [
+      0,
+      23
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 253,
+    "hex": "00FD",
+    "name": "Second timer off minute",
+    "bounds": [
+      0,
+      59
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 254,
+    "hex": "00FE",
+    "name": "P27 Tank electric heating on delay time",
+    "bounds": [
+      0,
+      60
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 255,
+    "hex": "00FF",
+    "name": "R14 Hot water mode compensation frequency",
+    "bounds": [
+      -50,
+      20
+    ],
+    "access": "service",
+    "signed": true,
+    "reason": null
+  },
+  {
+    "address": 256,
+    "hex": "0100",
+    "name": "F1 model selection",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 257,
+    "hex": "0101",
+    "name": "F2 Pump thermostatic operation mode",
+    "bounds": [
+      0,
+      2
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 258,
+    "hex": "0102",
+    "name": "F3 Pump thermostatic start/stop cycle",
+    "bounds": [
+      1,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 259,
+    "hex": "0103",
+    "name": "D1 DC fan 1 selection",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 260,
+    "hex": "0104",
+    "name": "D2 DC fan 2 selection",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 261,
+    "hex": "0105",
+    "name": "F4 DC pump mode",
+    "bounds": [
+      0,
+      2
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 262,
+    "hex": "0106",
+    "name": "F5 DC pump adjustment cycle",
+    "bounds": [
+      10,
+      120
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 263,
+    "hex": "0107",
+    "name": "F6 DC pump manual speed",
+    "bounds": [
+      10,
+      100
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 264,
+    "hex": "0108",
+    "name": "F7 DC pump maximum speed",
+    "bounds": [
+      10,
+      100
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 265,
+    "hex": "0109",
+    "name": "F8 DC pump minimum speed",
+    "bounds": [
+      10,
+      100
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 266,
+    "hex": "010A",
+    "name": "F9 DC water pump regulation speed",
+    "bounds": [
+      0,
+      50
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 267,
+    "hex": "010B",
+    "name": "F10 DC pump inlet and outlet water temperature difference",
+    "bounds": [
+      2,
+      30
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 268,
+    "hex": "010C",
+    "name": "0:1000HZ",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 269,
+    "hex": "010D",
+    "name": "R33 Constant temperature and frequency reduction",
+    "bounds": [
+      0,
+      10
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 270,
+    "hex": "010E",
+    "name": "S1 Smart grid control type",
+    "bounds": [
+      0,
+      2
+    ],
+    "access": "service",
+    "signed": false,
+    "reason": null
+  },
+  {
+    "address": 32768,
+    "hex": "8000",
+    "name": "reserve",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32769,
+    "hex": "8001",
+    "name": "Reservation",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32770,
+    "hex": "8002",
+    "name": "Machine status check",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32771,
+    "hex": "8003",
+    "name": "Mode Selection",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32772,
+    "hex": "8004",
+    "name": "Output Flag 1",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32773,
+    "hex": "8005",
+    "name": "Output flag 2",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32774,
+    "hex": "8006",
+    "name": "Output flag 3",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32775,
+    "hex": "8007",
+    "name": "Fault symbol 1",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32776,
+    "hex": "8008",
+    "name": "Fault symbol 2",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32777,
+    "hex": "8009",
+    "name": "Fault symbol 3",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32778,
+    "hex": "800A",
+    "name": "Fault symbol 4",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32779,
+    "hex": "800B",
+    "name": "Fault symbol 5",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32780,
+    "hex": "800C",
+    "name": "Fault symbol 6",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32781,
+    "hex": "800D",
+    "name": "Fault symbol 7",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32782,
+    "hex": "800E",
+    "name": "01 Water inlet temperature",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32783,
+    "hex": "800F",
+    "name": "10 Water tank temperature",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32784,
+    "hex": "8010",
+    "name": "Reservation",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32785,
+    "hex": "8011",
+    "name": "03Outside ambient temperature",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32786,
+    "hex": "8012",
+    "name": "02 Outgoing water temperature",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32787,
+    "hex": "8013",
+    "name": "Economic inlet temperature (reserved)",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32788,
+    "hex": "8014",
+    "name": "Economy out temperature (reserved)",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32789,
+    "hex": "8015",
+    "name": "05Return air temperature",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32790,
+    "hex": "8016",
+    "name": "06 External Coil Temperature",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32791,
+    "hex": "8017",
+    "name": "Reservation",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32792,
+    "hex": "8018",
+    "name": "Reservation",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32793,
+    "hex": "8019",
+    "name": "Reserved",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32794,
+    "hex": "801A",
+    "name": "09Refrigeration coil temperature",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32795,
+    "hex": "801B",
+    "name": "04 Exhaust temperature",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32796,
+    "hex": "801C",
+    "name": "11 Main expansion valve opening",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32797,
+    "hex": "801D",
+    "name": "12Auxiliary expansion valve opening",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32798,
+    "hex": "801E",
+    "name": "16 actual frequency of the press",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32799,
+    "hex": "801F",
+    "name": "Frequency conversion fault low eight",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32800,
+    "hex": "8020",
+    "name": "Inverter fault high octet",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32801,
+    "hex": "8021",
+    "name": "15 DC bus voltage value",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32802,
+    "hex": "8022",
+    "name": "Reservation",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32803,
+    "hex": "8023",
+    "name": "Reserved",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32804,
+    "hex": "8024",
+    "name": "Target frequency",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32805,
+    "hex": "8025",
+    "name": "13 Press current",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32806,
+    "hex": "8026",
+    "name": "19 DC fan 1 wind speed",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32807,
+    "hex": "8027",
+    "name": "Reserved",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32808,
+    "hex": "8028",
+    "name": "21 Low pressure pressure conversion temperature",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32809,
+    "hex": "8029",
+    "name": "Reserved",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  },
+  {
+    "address": 32810,
+    "hex": "802A",
+    "name": "23 DC pump actual speed",
+    "bounds": null,
+    "access": "read_only",
+    "signed": false,
+    "reason": "Bitfeld, reserviert, Hardwarekonfiguration oder ungeklaerte Kodierung"
+  }
+]

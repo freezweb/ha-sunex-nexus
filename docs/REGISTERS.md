@@ -56,6 +56,9 @@ remain raw until the document's ambiguous `0xff` wording is clarified.
 
 ## Unresolved firmware differences
 
+- `0x00B0` and `0x00B1` contain 28 and 26 on the tested M18, outside the supplied
+  table's 0-3 and 1-20 ranges. Their catalog entries are read-only pending vendor
+  clarification; do not clamp, normalize or write these observed values.
 - The table reserves `0x8022` and `0x8023`; observations suggest heatsink
   temperature and compressor current respectively.
 - The table places compressor current at `0x8025`, which does not match the
@@ -70,6 +73,20 @@ remain raw until the document's ambiguous `0xff` wording is clarified.
 
 Documented reading and a bounded heating-setpoint change/restoration were tested
 on one M18 EVI. Cooling and DHW writes have synthetic coverage only. Mode changes,
-power commands, firmware compatibility, Home Assistant runtime and closed-loop
-thermal control require separate acceptance. Communication loss leaves the
+power commands and firmware compatibility require separate acceptance. The
+external heating-controller MQTT runtime has verified HA command/readback,
+service locking and an active provisional inlet-target supervisor. This does
+not establish whole-pool temperature convergence or long-term stability.
+Communication loss leaves the
 native controller using its last settings; it is not a verified stop mechanism.
+
+## Service parameters
+
+`catalog.json` lists all 314 acquired words with access classification and
+documented numeric ranges. `change_parameter` accepts only listed numeric
+parameters, verifies native unit and compressor off, checks the expected
+previous raw value and verifies one FC06 write by FC03. It does not alter
+unrelated control bits or retry ambiguous writes. The caller must provide
+short-lived service authorization, durable uncertain-write locking, EEPROM
+budgets and a fresh-state policy. Never expose the low-level transport directly
+to arbitrary user register addresses.

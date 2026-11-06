@@ -11,6 +11,7 @@ from typing import ClassVar
 from pymodbus import FramerType
 from pymodbus.client import AsyncModbusTcpClient
 from .registers import SETPOINTS
+from .catalog import encode_parameter
 
 
 class ProtocolError(Exception):
@@ -155,6 +156,56 @@ class NexusTransport:
             self._closed = True
             if self._owners.get(self._endpoint) is self:
                 del self._owners[self._endpoint]
+
+    async def change_parameter(self, address: int, value: float, *, expected: int) -> SetpointChange:
+        """Service parameters only while the native unit and compressor are off."""
+        if type(address) is not int or type(expected) is not int or not 0 <= expected <= 65535:
+            raise ValueError('Invalid address or expected raw word')
+        encoded = encode_parameter(address, value)
+        async with self._lock:
+            enabled = (await self._read_locked(0, 1)).values[0]
+            compressor = (await self._read_locked(0x8004, 1)).values[0]
+            if enabled & 1 or compressor & 1:
+                raise ProtocolError('Service editing requires unit and compressor off')
+            return await self._change_locked(address, encoded, expected)
+
+    async def change_operating(self, key: str, value: int, *, expected: int) -> SetpointChange:
+        """Normal controls only; preserve all unrelated bits and protection modes."""
+        fields = {'enabled': (0, 1), 'powerful': (1, 16), 'silent': (1, 32),
+                  'weather_compensation': (1, 64), 'holiday': (2, 2)}
+        if type(value) is not int or type(expected) is not int or not 0 <= expected <= 65535:
+            raise ValueError('Invalid command')
+        if key == 'mode':
+            if value not in range(5):
+                raise ValueError('Unknown operating mode')
+            address, encoded = 4, value
+        else:
+            if key not in fields or value not in (0, 1):
+                raise ValueError('Unsupported operating field')
+            address, mask = fields[key]
+            encoded = (expected & ~mask) | (mask if value else 0)
+            if value and key in ('powerful', 'silent'):
+                encoded &= ~(32 if key == 'powerful' else 16)
+        async with self._lock:
+            if key == 'mode':
+                enabled = (await self._read_locked(0, 1)).values[0]
+                running = (await self._read_locked(0x8004, 1)).values[0]
+                if enabled & 1 or running & 1:
+                    raise ProtocolError('Change operating mode only with unit and compressor off')
+            return await self._change_locked(address, encoded, expected)
+
+    async def _change_locked(self, address: int, value: int, expected: int) -> SetpointChange:
+        before = await self._read_locked(address, 1)
+        if before.values != (expected,):
+            raise ProtocolError('Register changed since review; no write sent')
+        if value == expected:
+            return SetpointChange(address, expected, value, False, before.received_at)
+        await self._exchange_locked(6, address, value)
+        after = await self._read_locked(address, 1)
+        if after.values != (value,):
+            self._client.close()
+            raise ProtocolError('Register readback differs; no retry or automatic restoration')
+        return SetpointChange(address, expected, value, True, after.received_at)
 
     async def __aenter__(self) -> NexusTransport:
         return self
