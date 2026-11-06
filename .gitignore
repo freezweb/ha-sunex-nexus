@@ -1,0 +1,42 @@
+# Local Python tooling
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Credentials, local HA configuration and private evidence
+.env
+.env.*
+!.env.example
+secrets.yaml
+configuration.yaml
+.storage/
+*.key
+*.pem
+*.p12
+*.pfx
+*.eml
+*.pcap
+*.pcapng
+*.har
+*.db
+*.sqlite*
+private/
+local/
+tmp/
+backups/
+manufacturer-documents/
+.codex-remote-attachments/
+
+# Editor and OS state
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
