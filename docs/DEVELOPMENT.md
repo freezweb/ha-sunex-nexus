@@ -2,15 +2,17 @@
 
 ## Current state
 
-The public repository includes a shared, read-only protocol transport and nine
-synthetic TCP tests. The Home Assistant runtime integration, writable controls
-and automated validation workflows are not implemented. The protocol package
-has a development-only version; no HA release or compatibility floor is declared.
+The public repository includes a shared protocol transport, documented register
+decoding and bounded setpoint commands. Twenty-three synthetic tests cover both
+transport and decoding. The Home Assistant runtime integration, external
+controller interface and automated validation workflows remain unimplemented.
+The protocol package has a development-only version; no HA release or
+compatibility floor is declared.
 
-The manufacturer's transport description has been received privately, but the
-referenced register table was absent. Exact register contracts must be obtained,
-reviewed and converted into original implementation and synthetic test cases.
-Private source documents are not part of this repo.
+The manufacturer's M-EVI register table has been reviewed, including visual
+inspection of the temperature/setpoint tables. Several diagnostic addresses
+conflict with M18 display observations; they are deliberately not assigned
+engineering units until clarified. Private source documents remain local.
 
 ## Planned layout
 
@@ -36,10 +38,11 @@ copy. The packaging boundary will be chosen with the runtime implementation.
 - [ ] Map documented registers, access rights, limits and firmware applicability.
 - [x] Implement serialized read-only Modbus transport and request spacing.
 - [x] Verify read-only communication on an NEXUS M18 EVI using RTU-over-TCP.
-- [ ] Test signed/unsigned decoding, scaling, bitfields and fault decoding.
+- [x] Test signed/unsigned decoding, scaling, bitfields and fault decoding.
 - [ ] Implement UI setup, unique identities and duplicate-endpoint protection.
 - [ ] Implement entity availability and redacted diagnostics.
-- [ ] Implement documented writable controls with validation and readback.
+- [x] Implement documented temperature setpoints with validation and readback.
+- [ ] Implement remaining documented operating controls with bit preservation.
 - [ ] Define command ownership for HA and the external controller.
 - [ ] Test timeout, reconnection, unload and restart behavior without startup writes.
 - [ ] Verify commands and unchanged safety protections on commissioned hardware.
@@ -60,11 +63,14 @@ protection is not a cross-process or hostname-alias lock.
 
 ## Hardware evidence scope
 
-The shared transport successfully read two raw registers on an M18 EVI after
-an independent read-only address inventory. This proves basic FC03 framing and
-response handling on that installation, not temperature interpretation, write
-permissions, controller behavior or compatibility with other firmware. No
-write/control test has been performed. Raw installation captures remain private.
+The shared transport successfully read the documented configuration and status
+banks on an M18 EVI. A short heating setpoint reduction by one degree followed
+by restoration succeeded using FC06 and independent FC03 readback. All 271
+configuration words matched the baseline afterwards; no new fault flags were
+reported and compressor/pump output indications stayed active. This verifies
+the command path, not long-term thermal regulation or every operating mode.
+Raw installation captures remain private. No HA or controller deployment is
+claimed by this milestone.
 
 ## HACS default-repository submission
 

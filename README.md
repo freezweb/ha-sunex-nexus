@@ -13,16 +13,19 @@ The initial implementation targets the NEXUS M18 EVI. Compatibility with other
 models and firmware must be verified individually; similar product names are
 not evidence of compatible registers.
 
-The manufacturer has supplied transport details; the register table is still
-pending. That correspondence and its attachments are not redistributed here.
-Read-only RTU communication is implemented. Model-specific decoding, writable
-controls and hardware acceptance remain unfinished.
+The manufacturer has supplied the M-EVI register table. That correspondence
+and its attachments are not redistributed here. Documented temperatures,
+operating flags and fault registers are decoded. Bounded temperature-setpoint
+changes use precondition checks, FC06 and readback. One heating-target change
+and restoration have been verified on an M18 EVI. Other commands, complete HA
+integration and thermal-controller acceptance remain unfinished.
 
 ## Protocol development
 
 The shared `sunex-nexus-protocol` package is built from the same source directory
 that will ship inside the integration. It uses PyModbus for RTU-over-TCP framing,
-serializes reads, enforces request spacing, checks responses and never writes.
+serializes reads and setpoint transactions, enforces request spacing and checks
+responses. It never writes on startup or retries a failed command automatically.
 There is no cloud dependency and no automatic connection at import time.
 
 ```sh
@@ -33,8 +36,14 @@ python -m unittest discover -s tests -v
 ```
 
 Tests use a synthetic local TCP server, including fragmented packets, concurrent
-reads, timeout, cancellation and duplicate transport ownership. These tests do
-not prove register meanings or physical heat-pump control.
+reads, timeout, cancellation and duplicate transport ownership. They also cover
+signed/scaled temperatures, fault flags, target limits, changed preconditions,
+write echo/readback, no-op suppression and ambiguous write failures. Synthetic
+tests alone do not prove physical heat-pump control.
+
+See [Register contracts](docs/REGISTERS.md) for confirmed mappings and unresolved
+firmware differences. Heating/cooling setpoints regulate the water **inlet**,
+not the outlet; a warmer outlet does not itself mean the target was ignored.
 
 ## Planned scope
 

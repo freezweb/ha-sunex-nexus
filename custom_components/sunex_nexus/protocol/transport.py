@@ -1,8 +1,4 @@
-"""Serialized RTU-over-TCP reads using the manufacturer transport limits.
-
-This is not a register map or a controller. There is deliberately no write API
-until writable register contracts are available and verified.
-"""
+"""Serialized RTU-over-TCP with bounded, readback-verified setpoint changes."""
 from __future__ import annotations
 
 import asyncio
@@ -14,10 +10,11 @@ from typing import ClassVar
 
 from pymodbus import FramerType
 from pymodbus.client import AsyncModbusTcpClient
+from .registers import SETPOINTS
 
 
 class ProtocolError(Exception):
-    """A read failed or the response did not satisfy the request."""
+    """An exchange failed or the response did not satisfy the request."""
 
 
 @dataclass(frozen=True)
@@ -27,6 +24,15 @@ class RegisterSnapshot:
     address: int
     values: tuple[int, ...]
     received_at: datetime
+
+
+@dataclass(frozen=True)
+class SetpointChange:
+    address: int
+    previous: int
+    requested: int
+    changed: bool
+    verified_at: datetime
 
 
 class NexusTransport:
@@ -75,35 +81,72 @@ class NexusTransport:
         if not 0 <= address <= 65535 or not 1 <= count <= self.MAX_COUNT or address + count > 65536:
             raise ValueError("Read range exceeds the supported address or count limit")
         async with self._lock:
-            try:
-                await self._connect_locked()
-                await asyncio.sleep(max(0.0, self.REQUEST_GAP - (time.monotonic() - self._last_finished)))
-                response = await self._client.read_holding_registers(
-                    address, count=count, device_id=self.DEVICE_ID,
-                )
-                if response.isError():
-                    raise ProtocolError(f"Modbus exception {getattr(response, 'exception_code', 'unknown')}")
-                if response.function_code != 3 or response.dev_id != self.DEVICE_ID:
-                    raise ProtocolError("Unexpected response function or slave")
-                words = response.registers
-                if len(words) != count or any(type(w) is not int or not 0 <= w <= 65535 for w in words):
-                    raise ProtocolError("Malformed register response")
-                return RegisterSnapshot(address, tuple(words), datetime.now(timezone.utc))
-            except asyncio.CancelledError:
-                self._client.close()
+            return await self._read_locked(address, count)
+
+    async def _exchange_locked(self, function: int, address: int, value: int):
+        try:
+            await self._connect_locked()
+            await asyncio.sleep(max(0.0, self.REQUEST_GAP - (time.monotonic() - self._last_finished)))
+            if function == 3:
+                response = await self._client.read_holding_registers(address, count=value, device_id=self.DEVICE_ID)
+            else:
+                response = await self._client.write_register(address, value, device_id=self.DEVICE_ID)
+            if response.isError():
+                raise ProtocolError(f"Modbus exception {getattr(response, 'exception_code', 'unknown')}")
+            if response.function_code != function or response.dev_id != self.DEVICE_ID:
+                raise ProtocolError("Unexpected response function or slave")
+            words = response.registers
+            if any(type(w) is not int or not 0 <= w <= 65535 for w in words):
+                raise ProtocolError("Malformed register response")
+            if function == 3 and len(words) != value:
+                raise ProtocolError("Malformed register count")
+            if function == 6 and (response.address != address or words != [value]):
+                raise ProtocolError("Write echo does not match the requested setpoint")
+            return response
+        except asyncio.CancelledError:
+            self._client.close()
+            raise
+        except Exception as exc:
+            # A failed write may have executed. Never retry it automatically.
+            self._client.close()
+            task = asyncio.current_task()
+            if task is not None and task.cancelling():
+                raise asyncio.CancelledError from exc
+            if isinstance(exc, ProtocolError):
                 raise
-            except Exception as exc:
-                # Drop the stream so a late response cannot satisfy a later read.
+            raise ProtocolError("Modbus exchange failed; command outcome may be unknown") from exc
+        finally:
+            self._last_finished = time.monotonic()
+
+    async def _read_locked(self, address: int, count: int) -> RegisterSnapshot:
+        response = await self._exchange_locked(3, address, count)
+        return RegisterSnapshot(address, tuple(response.registers), datetime.now(timezone.utc))
+
+    async def set_setpoint(self, mode: str, temperature: float, *, expected: int) -> SetpointChange:
+        """Change one documented target, with optimistic conflict detection.
+
+        No generic register-write API is exposed. Equal values do not write
+        EEPROM. The physical display is not locked by this process, so this is
+        not a cross-device atomic compare-and-swap operation. A mismatch or
+        failed write requires fresh operator review, never automatic replay.
+        """
+        if mode not in SETPOINTS:
+            raise ValueError("Unsupported setpoint")
+        target = SETPOINTS[mode]
+        value = target.encode(temperature)
+        previous = target.encode(expected)
+        async with self._lock:
+            before = await self._read_locked(target.address, 1)
+            if before.values != (previous,):
+                raise ProtocolError("Setpoint changed since it was reviewed; no write sent")
+            if value == previous:
+                return SetpointChange(target.address, previous, value, False, before.received_at)
+            await self._exchange_locked(6, target.address, value)
+            after = await self._read_locked(target.address, 1)
+            if after.values != (value,):
                 self._client.close()
-                # PyModbus wraps task cancellation in ModbusIOException.
-                task = asyncio.current_task()
-                if task is not None and task.cancelling():
-                    raise asyncio.CancelledError from exc
-                if isinstance(exc, ProtocolError):
-                    raise
-                raise ProtocolError("Modbus read failed") from exc
-            finally:
-                self._last_finished = time.monotonic()
+                raise ProtocolError("Setpoint readback differs; do not repeat or blindly restore")
+            return SetpointChange(target.address, previous, value, True, after.received_at)
 
     async def close(self) -> None:
         """Wait for any in-flight read and release this process's ownership."""

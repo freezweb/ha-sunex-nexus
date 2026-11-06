@@ -6,7 +6,7 @@ import unittest
 
 from pymodbus.framer.rtu import FramerRTU
 from pymodbus.pdu import DecodePDU
-from pymodbus.pdu.register_message import ReadHoldingRegistersResponse
+from pymodbus.pdu.register_message import ReadHoldingRegistersResponse, WriteSingleRegisterResponse
 from sunex_nexus_protocol import NexusTransport, ProtocolError
 
 
@@ -18,6 +18,8 @@ class TransportTests(unittest.IsolatedAsyncioTestCase):
         self.handlers = set()
         self.response_mode = 'normal'
         self.clients = []
+        self.bank = {}
+        self.writes = []
         self.server = await asyncio.start_server(self.handle, '127.0.0.1', 0)
         self.port = self.server.sockets[0].getsockname()[1]
 
@@ -48,14 +50,25 @@ class TransportTests(unittest.IsolatedAsyncioTestCase):
             while True:
                 frame = await reader.readexactly(8)
                 self.assertTrue(FramerRTU.check_CRC(frame[:-2], int.from_bytes(frame[-2:], 'big')))
-                self.assertEqual(frame[:2], b'\x01\x03')
+                self.assertEqual(frame[0], 1)
+                self.assertIn(frame[1], (3, 6))
                 address, count = struct.unpack('>HH', frame[2:6])
                 self.requests.append((address, count, time.monotonic()))
                 if self.response_mode == 'silent':
                     continue
-                if self.response_mode == 'short':
-                    count -= 1
-                reply = ReadHoldingRegistersResponse(registers=[(address + i) % 65536 for i in range(count)], dev_id=1)
+                if frame[1] == 6:
+                    self.writes.append((address, count))
+                    self.bank[address] = count
+                    if self.response_mode == 'silent_write':
+                        continue
+                    if self.response_mode == 'wrong_readback':
+                        self.bank[address] += 1
+                    echo = count + 1 if self.response_mode == 'wrong_echo' else count
+                    reply = WriteSingleRegisterResponse(address=address, registers=[echo], dev_id=1)
+                else:
+                    if self.response_mode == 'short':
+                        count -= 1
+                    reply = ReadHoldingRegistersResponse(registers=[self.bank.get(address + i, (address + i) % 65536) for i in range(count)], dev_id=1)
                 payload = FramerRTU(DecodePDU(False)).buildFrame(reply)
                 # Deliberate packet fragmentation exercises real RTU-over-TCP parsing.
                 writer.write(payload[:3])
@@ -129,6 +142,54 @@ class TransportTests(unittest.IsolatedAsyncioTestCase):
             await task
         self.response_mode = 'normal'
         self.assertEqual((await client.read(9)).values, (9,))
+
+    async def test_setpoint_write_readback_and_noop(self):
+        self.bank[0x91] = 35
+        client = self.client()
+        result = await client.set_setpoint('heating', 36, expected=35)
+        self.assertTrue(result.changed)
+        self.assertEqual((result.previous, result.requested), (35, 36))
+        noop = await client.set_setpoint('heating', 36, expected=36)
+        self.assertFalse(noop.changed)
+        self.assertEqual(self.writes, [(0x91, 36)])
+        for index in range(1, len(self.requests)):
+            self.assertGreater(self.requests[index][2] - self.finished[index - 1], .2)
+
+    async def test_external_setpoint_change_prevents_write(self):
+        self.bank[0x91] = 35
+        with self.assertRaisesRegex(ProtocolError, 'changed since'):
+            await self.client().set_setpoint('heating', 36, expected=34)
+        self.assertEqual(self.writes, [])
+
+    async def test_invalid_setpoint_sends_nothing(self):
+        client = self.client()
+        for mode, value in [('heating', 51), ('heating', 36.5), ('heating', True),
+                            ('heating', float('nan')), ('hot_water', 20), ('reset', 1)]:
+            with self.assertRaises(ValueError):
+                await client.set_setpoint(mode, value, expected=35)
+        self.assertEqual(self.requests, [])
+
+    async def test_lost_write_response_not_retried(self):
+        self.bank[0x91] = 35
+        self.response_mode = 'silent_write'
+        with self.assertRaises(ProtocolError):
+            await self.client(timeout=.1).set_setpoint('heating', 36, expected=35)
+        self.assertEqual(self.writes, [(0x91, 36)])
+        self.assertEqual(self.bank[0x91], 36)
+
+    async def test_wrong_write_echo_rejected(self):
+        self.bank[0x91] = 35
+        self.response_mode = 'wrong_echo'
+        with self.assertRaises(ProtocolError):
+            await self.client().set_setpoint('heating', 36, expected=35)
+        self.assertEqual(self.writes, [(0x91, 36)])
+
+    async def test_wrong_write_readback_not_retried(self):
+        self.bank[0x91] = 35
+        self.response_mode = 'wrong_readback'
+        with self.assertRaisesRegex(ProtocolError, 'readback differs'):
+            await self.client().set_setpoint('heating', 36, expected=35)
+        self.assertEqual(self.writes, [(0x91, 36)])
 
 
 if __name__ == '__main__':

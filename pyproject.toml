@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sunex-nexus-protocol"
-version = "0.0.1.dev0"
-description = "Development-only shared read transport for SUNEX NEXUS"
+version = "0.0.2.dev0"
+description = "Shared M-EVI register decoding and verified setpoint transport"
 requires-python = ">=3.12"
 dependencies = ["pymodbus==3.13.1"]
 license = "MIT"
