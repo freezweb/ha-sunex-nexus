@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sunex-nexus-protocol"
+version = "0.0.1.dev0"
+description = "Development-only shared read transport for SUNEX NEXUS"
+requires-python = ">=3.12"
+dependencies = ["pymodbus==3.13.1"]
+license = "MIT"
+
+[tool.setuptools]
+packages = ["sunex_nexus_protocol"]
+
+[tool.setuptools.package-dir]
+sunex_nexus_protocol = "custom_components/sunex_nexus/protocol"

@@ -5,17 +5,36 @@ pumps, intended for distribution through HACS.
 
 ## Development status
 
-**Repository bootstrap only. No working integration or installable release is
-published yet. This repository has not been submitted to or accepted by HACS.**
+**Protocol transport in development. No working Home Assistant integration or
+installable HACS release is published yet. This repository has not been
+submitted to or accepted by HACS.**
 
 The initial implementation targets the NEXUS M18 EVI. Compatibility with other
 models and firmware must be verified individually; similar product names are
 not evidence of compatible registers.
 
-The manufacturer has supplied interface documentation for implementation.
-That correspondence and its attachments are not redistributed here. Live
-communication, register decoding, command readback and recovery still require
-verification before a release can be recommended.
+The manufacturer has supplied transport details; the register table is still
+pending. That correspondence and its attachments are not redistributed here.
+Read-only RTU communication is implemented. Model-specific decoding, writable
+controls and hardware acceptance remain unfinished.
+
+## Protocol development
+
+The shared `sunex-nexus-protocol` package is built from the same source directory
+that will ship inside the integration. It uses PyModbus for RTU-over-TCP framing,
+serializes reads, enforces request spacing, checks responses and never writes.
+There is no cloud dependency and no automatic connection at import time.
+
+```sh
+python -m venv .venv
+# Activate the virtual environment for your operating system first.
+python -m pip install -e .
+python -m unittest discover -s tests -v
+```
+
+Tests use a synthetic local TCP server, including fragmented packets, concurrent
+reads, timeout, cancellation and duplicate transport ownership. These tests do
+not prove register meanings or physical heat-pump control.
 
 ## Planned scope
 
@@ -46,7 +65,7 @@ permitted merely because an integration is installed or restarted.
 
 The root `hacs.json` reserves the integration's display name. Runtime files will
 live under `custom_components/sunex_nexus/`. Do not install this development
-bootstrap as a custom repository: there is no runtime implementation yet.
+project as a custom repository: there is no Home Assistant runtime integration yet.
 
 Release gates are tracked in [Development](docs/DEVELOPMENT.md), based on the
 official [HACS integration requirements](https://www.hacs.xyz/docs/publish/integration/)
