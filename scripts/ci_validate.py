@@ -1,14 +1,19 @@
 """Run official validators unchanged on Jenkins, without a Docker dependency."""
 import json
+import hashlib
+import io
 import os
 from pathlib import Path
+import platform
 import subprocess
 import sys
+import urllib.request
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORTS = ROOT / '.ci-reports'
 REPORTS.mkdir(exist_ok=True)
-UV = ROOT / '.ci-bootstrap/bin/uv'
+UV = ROOT / '.ci-tools/uv'
 CORE_SHA = '74cf5a49c63ed8d4d87717844bf14f79c28c9cea'
 HACS_SHA = 'a15e87ec0d1c82e58f1ddbaf17669d3eaa261eb8'
 
@@ -50,6 +55,19 @@ def install(python, *requirements):
 
 mode = sys.argv[1]
 if mode == 'bootstrap':
+    if platform.system() != 'Linux' or platform.machine() != 'x86_64':
+        raise RuntimeError('This CI bootstrap requires Linux x86_64')
+    if not UV.exists():
+        metadata = json.load(urllib.request.urlopen('https://pypi.org/pypi/uv/0.9.6/json', timeout=30))
+        artifact = next(row for row in metadata['urls'] if
+                        row['filename'].endswith('manylinux_2_17_x86_64.manylinux2014_x86_64.whl'))
+        payload = urllib.request.urlopen(artifact['url'], timeout=60).read()
+        assert hashlib.sha256(payload).hexdigest() == artifact['digests']['sha256']
+        with zipfile.ZipFile(io.BytesIO(payload)) as wheel:
+            binary = next(name for name in wheel.namelist() if Path(name).name == 'uv')
+            UV.parent.mkdir(exist_ok=True)
+            UV.write_bytes(wheel.read(binary))
+        UV.chmod(0o755)
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     (REPORTS / 'sources.json').write_text(json.dumps({
         'integration_commit': commit, 'hassfest_core_commit': CORE_SHA,

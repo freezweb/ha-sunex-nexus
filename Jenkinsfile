@@ -11,17 +11,15 @@ pipeline {
             steps {
                 sh '''
                     set -eu
-                    python3 -m venv .ci-bootstrap
-                    .ci-bootstrap/bin/pip install --disable-pip-version-check uv==0.9.6
-                    .ci-bootstrap/bin/python scripts/ci_validate.py bootstrap
+                    python3 scripts/ci_validate.py bootstrap
                 '''
             }
         }
         stage('Native HA and protocol tests') {
-            steps { sh '.ci-bootstrap/bin/python scripts/ci_validate.py tests' }
+            steps { sh 'python3 scripts/ci_validate.py tests' }
         }
         stage('Official hassfest') {
-            steps { sh '.ci-bootstrap/bin/python scripts/ci_validate.py hassfest' }
+            steps { sh 'python3 scripts/ci_validate.py hassfest' }
         }
         stage('Official HACS validator') {
             steps {
@@ -29,7 +27,7 @@ pipeline {
                     usernameVariable: 'CI_GITHUB_USER', passwordVariable: 'INPUT_GITHUB_TOKEN')]) {
                     sh '''
                         set +x
-                        .ci-bootstrap/bin/python scripts/ci_validate.py hacs
+                        python3 scripts/ci_validate.py hacs
                     '''
                 }
             }
