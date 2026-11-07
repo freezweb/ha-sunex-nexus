@@ -43,9 +43,9 @@ def checkout(name, remote, revision):
 
 
 def environment(name):
-    path = ROOT / name
+    path = ROOT / (name + '-py3145')
     if not (path / 'bin/python').exists():
-        run([UV, 'venv', '--python', '3.14', path])
+        run([UV, 'venv', '--python', '3.14.5', path])
     return path / 'bin/python'
 
 
