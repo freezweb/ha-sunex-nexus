@@ -15,10 +15,13 @@ HACS_SHA = 'a15e87ec0d1c82e58f1ddbaf17669d3eaa261eb8'
 
 def run(args, *, cwd=ROOT, env=None, report=None):
     if report:
-        with (REPORTS / report).open('w') as out:
-            result = subprocess.run([str(a) for a in args], cwd=cwd, env=env,
-                                    stdout=out, stderr=subprocess.STDOUT)
-        print((REPORTS / report).read_text(), flush=True)
+        result = subprocess.run([str(a) for a in args], cwd=cwd, env=env,
+                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        output = result.stdout
+        if env and env.get('INPUT_GITHUB_TOKEN'):
+            output = output.replace(env['INPUT_GITHUB_TOKEN'], '[REDACTED]')
+        (REPORTS / report).write_text(output)
+        print(output, flush=True)
         result.check_returncode()
     else:
         subprocess.run([str(a) for a in args], cwd=cwd, env=env, check=True)
