@@ -57,8 +57,8 @@ mode = sys.argv[1]
 if mode == 'bootstrap':
     if platform.system() != 'Linux' or platform.machine() != 'x86_64':
         raise RuntimeError('This CI bootstrap requires Linux x86_64')
-    if not UV.exists():
-        metadata = json.load(urllib.request.urlopen('https://pypi.org/pypi/uv/0.9.6/json', timeout=30))
+    if not UV.exists() or not subprocess.check_output([UV, '--version'], text=True).startswith('uv 0.13.5 '):
+        metadata = json.load(urllib.request.urlopen('https://pypi.org/pypi/uv/0.13.5/json', timeout=30))
         artifact = next(row for row in metadata['urls'] if
                         row['filename'].endswith('manylinux_2_17_x86_64.manylinux2014_x86_64.whl'))
         payload = urllib.request.urlopen(artifact['url'], timeout=60).read()
