@@ -1,0 +1,164 @@
+{
+  "title": "SUNEX NEXUS",
+  "config": {
+    "step": {
+      "user": {
+        "title": "SUNEX NEXUS M-EVI",
+        "description": "Lokales RTU-over-TCP-Gateway, 9600 Baud, 8N1, Geraeteadresse 1. Nur fuer bestaetigte M-EVI-Registerkarten. Kein anderer Modbus-Master darf dieses Gateway oder denselben Bus verwenden. Einrichtung liest nur; Schreibzugriffe bleiben aus.",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "exclusive_gateway": "Ich habe die exklusive Busnutzung und M-EVI-Kompatibilitaet geprueft"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Gateway nicht erreichbar oder Registerkarte nicht kompatibel",
+      "exclusive_required": "Exklusive Busnutzung muss bestaetigt werden"
+    },
+    "abort": {
+      "already_configured": "Dieses Gateway ist bereits eingerichtet"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Kommunikation und Schreibzugriff",
+        "description": "Schreiben nur fuer beaufsichtigte, korrekt angeschlossene Anlagen aktivieren. Keine Schutzfunktionen ueberbruecken. Serviceparameter benoetigen zusaetzlich Geraet und Verdichter aus sowie die 10-Minuten-Freigabe.",
+        "data": {
+          "allow_writes": "Schreibzugriffe erlauben",
+          "poll_interval": "Abfrageintervall (Sekunden)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "water_inlet_temperature": {
+        "name": "Wassereinlass"
+      },
+      "water_outlet_temperature": {
+        "name": "Wasserauslass"
+      },
+      "tank_temperature": {
+        "name": "Speichertemperatur"
+      },
+      "ambient_temperature": {
+        "name": "Aussentemperatur"
+      },
+      "return_gas_temperature": {
+        "name": "Sauggastemperatur"
+      },
+      "outdoor_coil_temperature": {
+        "name": "Verdampfertemperatur"
+      },
+      "cooling_coil_temperature": {
+        "name": "Kuehlwaermetauscher"
+      },
+      "discharge_gas_temperature": {
+        "name": "Heissgastemperatur"
+      },
+      "main_expansion_valve": {
+        "name": "Haupt-Expansionsventil Rohwert"
+      },
+      "auxiliary_expansion_valve": {
+        "name": "Hilfs-Expansionsventil Rohwert"
+      },
+      "compressor_frequency": {
+        "name": "Verdichterfrequenz"
+      },
+      "dc_bus_voltage": {
+        "name": "Zwischenkreisspannung"
+      },
+      "target_frequency": {
+        "name": "Verdichter-Sollfrequenz"
+      },
+      "fan_1_speed": {
+        "name": "Luefter 1 Drehzahl"
+      },
+      "dc_pump_speed_raw": {
+        "name": "DC-Pumpendrehzahl Rohwert"
+      },
+      "faults": {
+        "name": "Aktive Fehleranzahl"
+      }
+    },
+    "binary_sensor": {
+      "enabled": {
+        "name": "Geraet freigegeben"
+      },
+      "compressor_running": {
+        "name": "Verdichter laeuft"
+      },
+      "fan_running": {
+        "name": "Luefter laeuft"
+      },
+      "pump_running": {
+        "name": "Wasserpumpe laeuft"
+      },
+      "defrost": {
+        "name": "Abtauung"
+      },
+      "flow_switch_closed": {
+        "name": "Stroemungskontakt geschlossen"
+      },
+      "evu_contact_closed": {
+        "name": "EVU-Kontakt geschlossen"
+      },
+      "sg_contact_closed": {
+        "name": "SG-Kontakt geschlossen"
+      },
+      "write_lock": {
+        "name": "Schreibsperre nach unbestaetigtem Befehl"
+      }
+    },
+    "number": {
+      "heating_setpoint": {
+        "name": "Heizen Einlass-Solltemperatur"
+      },
+      "cooling_setpoint": {
+        "name": "Kuehlen Einlass-Solltemperatur"
+      },
+      "hot_water_setpoint": {
+        "name": "Warmwasser-Solltemperatur"
+      }
+    },
+    "switch": {
+      "enabled": {
+        "name": "Geraetefreigabe"
+      },
+      "powerful": {
+        "name": "Leistungsbetrieb"
+      },
+      "silent": {
+        "name": "Leisebetrieb"
+      },
+      "weather_compensation": {
+        "name": "Heizkompensation"
+      },
+      "holiday": {
+        "name": "Urlaubsbetrieb"
+      },
+      "service_edit": {
+        "name": "Servicebearbeitung (10 Minuten)"
+      }
+    },
+    "button": {
+      "acknowledge_write_lock": {
+        "name": "Befehl nach Pruefung quittieren"
+      }
+    },
+    "select": {
+      "mode": {
+        "name": "Betriebsart",
+        "state": {
+          "hot_water": "Warmwasser",
+          "heating": "Heizen",
+          "cooling": "Kuehlen",
+          "hot_water_heating": "Warmwasser und Heizen",
+          "hot_water_cooling": "Warmwasser und Kuehlen"
+        }
+      }
+    }
+  }
+}

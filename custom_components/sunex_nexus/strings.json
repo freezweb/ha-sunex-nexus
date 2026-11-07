@@ -1,0 +1,164 @@
+{
+  "title": "SUNEX NEXUS",
+  "config": {
+    "step": {
+      "user": {
+        "title": "SUNEX NEXUS M-EVI",
+        "description": "Local RTU-over-TCP gateway, 9600 baud, 8N1, slave 1. Only for confirmed M-EVI register maps. No other Modbus master may use this gateway or bus. Setup only reads; writes remain disabled.",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "exclusive_gateway": "I verified exclusive bus ownership and M-EVI compatibility"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect or unsupported register map",
+      "exclusive_required": "Exclusive bus ownership must be confirmed"
+    },
+    "abort": {
+      "already_configured": "This gateway is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Communication and write access",
+        "description": "Enable writes only for supervised, correctly connected installations. Do not bypass protections. Service parameters additionally require unit and compressor off and the 10-minute service switch.",
+        "data": {
+          "allow_writes": "Allow writes",
+          "poll_interval": "Polling interval (seconds)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "water_inlet_temperature": {
+        "name": "Water inlet"
+      },
+      "water_outlet_temperature": {
+        "name": "Water outlet"
+      },
+      "tank_temperature": {
+        "name": "Tank temperature"
+      },
+      "ambient_temperature": {
+        "name": "Outdoor temperature"
+      },
+      "return_gas_temperature": {
+        "name": "Suction gas temperature"
+      },
+      "outdoor_coil_temperature": {
+        "name": "Evaporator temperature"
+      },
+      "cooling_coil_temperature": {
+        "name": "Cooling coil temperature"
+      },
+      "discharge_gas_temperature": {
+        "name": "Discharge gas temperature"
+      },
+      "main_expansion_valve": {
+        "name": "Main expansion valve raw"
+      },
+      "auxiliary_expansion_valve": {
+        "name": "Auxiliary expansion valve raw"
+      },
+      "compressor_frequency": {
+        "name": "Compressor frequency"
+      },
+      "dc_bus_voltage": {
+        "name": "DC bus voltage"
+      },
+      "target_frequency": {
+        "name": "Target compressor frequency"
+      },
+      "fan_1_speed": {
+        "name": "Fan 1 speed"
+      },
+      "dc_pump_speed_raw": {
+        "name": "DC pump speed raw"
+      },
+      "faults": {
+        "name": "Active fault count"
+      }
+    },
+    "binary_sensor": {
+      "enabled": {
+        "name": "Unit enabled"
+      },
+      "compressor_running": {
+        "name": "Compressor running"
+      },
+      "fan_running": {
+        "name": "Fan running"
+      },
+      "pump_running": {
+        "name": "Water pump running"
+      },
+      "defrost": {
+        "name": "Defrost"
+      },
+      "flow_switch_closed": {
+        "name": "Flow switch closed"
+      },
+      "evu_contact_closed": {
+        "name": "EVU contact closed"
+      },
+      "sg_contact_closed": {
+        "name": "SG contact closed"
+      },
+      "write_lock": {
+        "name": "Uncertain command lock"
+      }
+    },
+    "number": {
+      "heating_setpoint": {
+        "name": "Heating inlet target"
+      },
+      "cooling_setpoint": {
+        "name": "Cooling inlet target"
+      },
+      "hot_water_setpoint": {
+        "name": "Hot water target"
+      }
+    },
+    "switch": {
+      "enabled": {
+        "name": "Unit enable"
+      },
+      "powerful": {
+        "name": "Powerful mode"
+      },
+      "silent": {
+        "name": "Silent mode"
+      },
+      "weather_compensation": {
+        "name": "Weather compensation"
+      },
+      "holiday": {
+        "name": "Holiday mode"
+      },
+      "service_edit": {
+        "name": "Service editing (10 minutes)"
+      }
+    },
+    "button": {
+      "acknowledge_write_lock": {
+        "name": "Acknowledge command after inspection"
+      }
+    },
+    "select": {
+      "mode": {
+        "name": "Operating mode",
+        "state": {
+          "hot_water": "Hot water",
+          "heating": "Heating",
+          "cooling": "Cooling",
+          "hot_water_heating": "Hot water and heating",
+          "hot_water_cooling": "Hot water and cooling"
+        }
+      }
+    }
+  }
+}

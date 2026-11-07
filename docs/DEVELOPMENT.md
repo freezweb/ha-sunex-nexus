@@ -1,80 +1,48 @@
-# Development and release gates
+# Development and release verification
 
-## Current state
+## Architecture
 
-The public repository includes a shared protocol transport, documented register
-decoding and bounded setpoint commands. Twenty-three synthetic tests cover both
-transport and decoding. The Home Assistant runtime integration, external
-controller interface and automated validation workflows remain unimplemented.
-The protocol package has a development-only version; no HA release or
-compatibility floor is declared.
+The native integration runs without MQTT or an external heating controller.
+Its coordinator owns one serialized RTU-over-TCP client and publishes only
+complete snapshots. Entity setup never writes to the device. Polling and whole
+command transactions use one coordinator lock. Partial reads are discarded.
 
-The manufacturer's M-EVI register table has been reviewed, including visual
-inspection of the temperature/setpoint tables. Several diagnostic addresses
-conflict with M18 display observations; they are deliberately not assigned
-engineering units until clarified. Private source documents remain local.
+The HA-independent protocol lives in `custom_components/sunex_nexus/protocol`.
+The external heating controller remains a separate application and may package
+this library independently. It is neither started nor modified by this plugin.
+Never run both applications as masters of the same physical bus. The in-process
+endpoint guard cannot arbitrate another process, hostname alias or RS485 master.
 
-## Planned layout
+## Command persistence
 
-```text
-custom_components/sunex_nexus/
-    __init__.py
-    manifest.json
-    config_flow.py
-    coordinator.py
-    diagnostics.py
-    translations/
-tests/
-hacs.json
-```
+Home Assistant's standard `.storage` API stores only an uncertainty marker and
+write timestamps, not credentials or a new SQL database. The pending marker is
+saved before sending. Failure, cancellation or process death leaves writes
+locked until an operator acknowledges after a successful fresh read. The
+temporary service-edit window is never restored after restart.
 
-Runtime dependencies must be installable through the integration manifest or
-included within the integration directory. The external heating-controller
-consumer must use the same tested protocol contracts, not a divergent register
-copy. The packaging boundary will be chosen with the runtime implementation.
+## Release gates
 
-## Before the first usable release
+- Native config flow, entity platforms, EN/DE translations and local brand icon.
+- Protocol tests: actual framed TCP exchanges, fragmentation, timeout, concurrent
+  clients, no-op suppression, precondition conflict, signed/scaled data and faults.
+- Native HA tests: setup/unload, all entity registration, actual number service,
+  read-only default, unavailable/recovery, persistent write lock, acknowledgement,
+  service window, stale-data and write-budget guards, sanitized diagnostics.
+- HACS action without ignored checks and hassfest must pass before submission.
+- Publish a GitHub release, not just a tag, after successful validation.
+- Submit an editable PR from a dedicated branch to `hacs/default`.
+- Preserve a precise distinction between submission and maintainer acceptance.
 
-- [ ] Map documented registers, access rights, limits and firmware applicability.
-- [x] Implement serialized read-only Modbus transport and request spacing.
-- [x] Verify read-only communication on an NEXUS M18 EVI using RTU-over-TCP.
-- [x] Test signed/unsigned decoding, scaling, bitfields and fault decoding.
-- [ ] Implement UI setup, unique identities and duplicate-endpoint protection.
-- [ ] Implement entity availability and redacted diagnostics.
-- [x] Implement documented temperature setpoints with validation and readback.
-- [ ] Implement remaining documented operating controls with bit preservation.
-- [ ] Define command ownership for HA and the external controller.
-- [ ] Test timeout, reconnection, unload and restart behavior without startup writes.
-- [ ] Verify commands and unchanged safety protections on commissioned hardware.
-- [ ] Add CI for tests, Home Assistant validation and HACS validation.
-- [ ] Provide permitted brand assets and English/German UI strings.
-- [ ] Document installation, supported models and known limitations.
-- [ ] Review all tracked files for secrets and private source material.
-- [ ] Publish a versioned release with a precise hardware-verification statement.
+## Physical evidence and remaining limitations
 
-## Shared package boundary
+On one M18 EVI the shared protocol read all documented banks and changed the
+heating target by one degree, then restored it. All 271 configuration words
+matched baseline afterwards. No new native fault was observed. This proves a
+bounded protocol command, not every service field or thermal performance.
 
-`custom_components/sunex_nexus/protocol/` is HA-independent. The development
-package exposes this exact source as `sunex_nexus_protocol` to the external
-controller; HA will use a relative import. Do not maintain a second protocol
-copy. Installation of the package alone does not start any worker or connect
-to a gateway. One process must own the physical bus; in-process endpoint
-protection is not a cross-process or hostname-alias lock.
-
-## Hardware evidence scope
-
-The shared transport successfully read the documented configuration and status
-banks on an M18 EVI. A short heating setpoint reduction by one degree followed
-by restoration succeeded using FC06 and independent FC03 readback. All 271
-configuration words matched the baseline afterwards; no new fault flags were
-reported and compressor/pump output indications stayed active. This verifies
-the command path, not long-term thermal regulation or every operating mode.
-Raw installation captures remain private. No HA or controller deployment is
-claimed by this milestone.
-
-## HACS default-repository submission
-
-Only request inclusion after a usable release and successful validation against
-the then-current HACS requirements. Creating this public repository is not an
-HACS submission or acceptance. A custom-repository installation and inclusion
-in the default catalog are separate milestones.
+The native component is validated in isolated HA tests; production continues
+using its existing independent controller. Activating the native component on
+that same gateway requires coordinated ownership handover, not parallel polling.
+No pool regulator is shipped in this integration. Contradictory or undocumented
+registers stay raw/read-only. Manufacturer correspondence remains private.
