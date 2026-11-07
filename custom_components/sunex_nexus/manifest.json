@@ -7,6 +7,6 @@
   "integration_type": "device",
   "iot_class": "local_polling",
   "issue_tracker": "https://github.com/freezweb/ha-sunex-nexus/issues",
-  "requirements": ["pymodbus==3.13.1"],
+  "requirements": ["pymodbus>=3.13.1"],
   "version": "0.1.0"
 }
