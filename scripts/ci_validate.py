@@ -57,6 +57,9 @@ mode = sys.argv[1]
 if mode == 'bootstrap':
     if platform.system() != 'Linux' or platform.machine() != 'x86_64':
         raise RuntimeError('This CI bootstrap requires Linux x86_64')
+    # Never archive a previous build's successful validator result as this run's.
+    for filename in ('sources.json', 'tests.xml', 'tests.txt', 'hassfest.txt', 'hacs.txt'):
+        (REPORTS / filename).unlink(missing_ok=True)
     if not UV.exists() or not subprocess.check_output([UV, '--version'], text=True).startswith('uv 0.13.5 '):
         metadata = json.load(urllib.request.urlopen('https://pypi.org/pypi/uv/0.13.5/json', timeout=30))
         artifact = next(row for row in metadata['urls'] if

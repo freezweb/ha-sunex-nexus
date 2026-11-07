@@ -34,6 +34,26 @@ temporary service-edit window is never restored after restart.
 - Submit an editable PR from a dedicated branch to `hacs/default`.
 - Preserve a precise distinction between submission and maintainer acceptance.
 
+## Jenkins validation
+
+The repository includes a dedicated Jenkins pipeline with isolated Python 3.14.5
+environments, native HA tests, and the unmodified official hassfest/HACS
+validators pinned by source commit in `scripts/ci_validate.py`. No checks are
+ignored. Reports record the tested integration commit and validator source
+commits. The job checks for changes on `main` every 15 minutes; it does not run
+untrusted pull-request branches with credentials and never accesses a heat pump.
+
+The HACS validator reads a protected Jenkins GitHub credential at runtime.
+It is never stored in the repository or passed as a command-line argument.
+Release assets can contain reviewed validation reports, but not private Jenkins
+console logs or customer configuration.
+
+The GitHub workflows are also present. Passing the validators on Jenkins is
+technical validation, not a claim that GitHub Actions passed. HACS default-catalog
+submission separately requires successful GitHub Actions under its published
+policy, or prior agreement from HACS maintainers to accept another CI provider.
+Custom-repository installation does not imply default-catalog acceptance.
+
 ## Physical evidence and remaining limitations
 
 On one M18 EVI the shared protocol read all documented banks and changed the

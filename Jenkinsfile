@@ -1,5 +1,6 @@
 pipeline {
     agent { label 'linux' }
+    triggers { pollSCM('H/15 * * * *') }
     options {
         timestamps()
         disableConcurrentBuilds()
