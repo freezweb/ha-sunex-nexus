@@ -40,3 +40,4 @@ manufacturer-documents/
 .vscode/
 Thumbs.db
 .DS_Store
+.ci-*/
